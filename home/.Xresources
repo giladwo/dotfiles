@@ -1,0 +1,2 @@
+urxvt.perl-ext-common: default,resize-font
+URxvt*termname: urxvt256-color

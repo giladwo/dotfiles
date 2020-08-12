@@ -1,0 +1,8 @@
+:def hoogle \x -> return $ ":!hoogle \"" ++ x ++ "\""
+:def doc \x -> return $ ":!hoogle --info \"" ++ x ++ "\""
+
+import Data.List (intercalate)
+-- :set prompt-function \ms _ -> let prefix = intercalate " " ms in pure $ "\ESC[1;32m" ++ prefix ++ (if length prefix < 30 then " " else "\n") ++ "\ESC[0;33mλ> \ESC[m"
+:set prompt-function \ms _ -> let prefix = intercalate " " ms in pure $ "\ESC[1;32m" ++ prefix ++ " " ++ "\ESC[0;33mλ> \ESC[m"
+:set prompt-cont-function \ms _ -> let prefix = intercalate " " ms in pure $ "\ESC[1;32m" ++ prefix ++ " " ++ "\ESC[0;33mλ| \ESC[m"
+:m

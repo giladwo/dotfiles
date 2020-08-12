@@ -1,0 +1,21 @@
+[user]
+    name = <your name>
+    email = <your email>
+[color]
+    status = auto
+    branch = auto
+    interactive = always
+    ui = always
+    diff = auto
+[alias]
+    co = checkout
+    cb = checkout -b
+    st = status -sb
+    br = branch -v
+    logo = log --oneline
+    diffc = diff --cached
+    diffcc = diff --color-words='[^[:space:]]'
+    bsu = ! current=$(git branch --no-color | grep '*' | cut -d' ' -f2) && git branch --set-upstream-to "$current" "origin/$current"
+[fetch]
+    default = all
+    prune = true
