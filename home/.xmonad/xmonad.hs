@@ -41,7 +41,7 @@ standalone = do
     myXmonad myConfig
         { logHook = dynamicLogWithPP xmobarPP
             { ppOutput = hPutStrLn xmproc
-            , ppTitle = xmobarColor "green" "" . shorten 120
+            , ppTitle = xmobarColor "green" "" . shorten 130
             }
         }
 
