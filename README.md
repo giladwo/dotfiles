@@ -3,11 +3,14 @@ My (rather modest) dotfiles
 
 
 # Requirements:
-0. rxvt-unicode xmonad xmonad-contrib xmobar dmenu
-3. feh (background)
-4. xscreensaver
-5. scrot (screen capture, can use KDE's spectacle instead)
-6. amixer (for audio controls, usually already installed)
+0. rxvt-unicode dmenu (recommended)
+1. xmonad xmonad-contrib xmobar
+    * On Manjaro (but probably all Arch-based distros) - [install from source](https://brianbuccola.com/how-to-install-xmonad-and-xmobar-via-stack/), because apparently the official packages are broken
+    * On Fedora (and probably all Fedora-based distros) - install from the official packages
+2. feh (background)
+3. xscreensaver
+4. scrot (screen capture, can use KDE's spectacle instead)
+5. amixer (for audio controls, usually already installed)
 
 
 # After installation:
