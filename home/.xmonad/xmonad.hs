@@ -1,4 +1,4 @@
-import System.Environment
+import System.Environment.Blank (getEnv)
 import System.IO
 import XMonad.Actions.CycleWS
 import XMonad.Actions.DynamicWorkspaces
@@ -18,24 +18,33 @@ import XMonad.Util.SpawnOnce
 
 
 main = do
+    -- KDE's display manager (sddm) sets this variable manager
     config <- getEnv "XDG_SESSION_DESKTOP"
-    let myXmonad = xmonad . addWorkspaceKeys . sensibleDefaults
+
     case config of
-        "" -> do
-            xmproc <- spawnPipe "/usr/bin/xmobar $HOME/.config/xmobar/xmobarrc"
-            myXmonad myConfig
-                { logHook = dynamicLogWithPP xmobarPP
-                    { ppOutput = hPutStrLn xmproc
-                    , ppTitle = xmobarColor "green" "" . shorten 120
-                    }
-                }
+        -- not using sddm
+        Nothing -> standalone
 
-        "KDE" -> do
-            myXmonad kde4Config
+        -- using some sddm session
+        Just "" -> standalone
 
-        other -> do
+        Just "KDE" -> myXmonad kde4Config
+
+        Just other -> do
             putStrLn $ "Unexpected XDG_SESSION_DESKTOP='" ++ other ++ "'. Using default XMonad config."
             myXmonad def
+
+myXmonad = xmonad . addWorkspaceKeys . sensibleDefaults
+
+standalone = do
+    xmproc <- spawnPipe "/usr/bin/xmobar $HOME/.config/xmobar/xmobarrc"
+    myXmonad myConfig
+        { logHook = dynamicLogWithPP xmobarPP
+            { ppOutput = hPutStrLn xmproc
+            , ppTitle = xmobarColor "green" "" . shorten 120
+            }
+        }
+
 
 
 myConfig = def { {- workspaces = ["1:Terminal", "2:Editor", "3:Reactor", "4:Web"] ++ map show [5..9]
