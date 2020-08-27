@@ -31,7 +31,7 @@ myConfig = def { {- workspaces = ["1:Terminal", "2:Editor", "3:Reactor", "4:Web"
                , borderWidth = 1
                , modMask = mod4Mask
                , focusedBorderColor = "green"
-               , terminal = "urxvt256c +sb -tr -blr 3 -sh 30 -fg grey -bg black -fn \"xft:Bitstream Vera Sans Mono:pixelsize=12\""
+               , terminal = "urxvt +sb -tr -blr 3 -sh 30 -fg grey -bg black -fn \"xft:Bitstream Vera Sans Mono:pixelsize=12\""
                } `additionalKeysP`
                [ ("M-S-z", spawn "xscreensaver-command -lock")
                , ("M-S-r", renameWorkspace def)
